@@ -1,6 +1,6 @@
 resource "aws_dynamodb_table" "food_table" {
   name = "food-table"
-  #billing_mode     = "PAY_PER_REQUEST"
+  billing_mode     = "PAY_PER_REQUEST"
   hash_key = "ingredient_1"
 
   attribute {
@@ -108,5 +108,6 @@ resource "aws_lambda_function" "terra_func_lambda" {
   function_name = "Fetch-Recipe"
   role          = aws_iam_role.lambda_role.arn
   handler       = "lambda_code.handler"
+  source_code_hash = filebase64sha256("python/lambda_code.zip")
   runtime       = "python3.9"
 }
