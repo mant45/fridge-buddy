@@ -19,9 +19,9 @@ body{
     z-index: -1;
 }
 #card{
-    max-width: 500px;
+    max-width: 400px;
     height: 50%;
-    box-shadow: 5px 10px 8px #888888;
+    box-shadow: 5px 10px 8px #000000;
     border: 1px solid;
     background-color: white;
     
@@ -44,18 +44,18 @@ body{
 }
 
 form{
-    min-width: 500px;
+    min-width: 450px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 #ingredient_entry{
-    width: 90%;
+    width: 70%;
 }
 input{
     margin-top: 10px;
-    width: 400px;
+    width: 200px;
 }
 
 #results{
