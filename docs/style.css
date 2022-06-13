@@ -1,0 +1,113 @@
+body,html{
+    height:100%;
+    overflow: hidden;
+}
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    background: linear-gradient(#e66465, #9198e5);
+}
+#landing{
+    max-width: 100%;
+    height:100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: -1;
+}
+#card{
+    max-width: 500px;
+    height: 50%;
+    box-shadow: 5px 10px 8px #888888;
+    border: 1px solid;
+    background-color: white;
+    
+}
+#header{
+    height: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+#main{
+    min-height:60%;
+    min-width:inherit;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+form{
+    min-width: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+#ingredient_entry{
+    width: 90%;
+}
+input{
+    margin-top: 10px;
+    width: 400px;
+}
+
+#results{
+    width: 100%;
+    height:100%;
+    background-color: white;
+    z-index: -3;
+    visibility: visible;
+    display: inline-block;
+    
+}
+
+.fadeIn{
+    -webkit-animation-fill-mode: forwards;
+            animation-fill-mode: forwards;
+    -webkit-animation-name: keyFadeIn;
+            animation-name: keyFadeIn;
+    -webkit-animation-duration: 1.0s;
+            animation-duration: 1.0s;
+    
+}
+
+@keyframes keyFadeIn{
+    from {
+
+    }
+	to {
+        visibility: visible;
+        transform: translateY(-100%); 
+    }
+}
+
+
+@media only screen and (min-width: 600px) {
+    #content{
+        background: green;
+        max-width: 992px;
+    }
+} 
+  
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+    #content{
+        background: orange;
+        max-width: 1200px;
+    }
+} 
+  
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+    #content{
+        background: pink;
+        max-width: 100%;
+    }
+}
