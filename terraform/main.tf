@@ -1,7 +1,7 @@
 resource "aws_dynamodb_table" "food_table" {
-  name = "food-table"
-  billing_mode     = "PAY_PER_REQUEST"
-  hash_key = "ingredient_1"
+  name         = "food-table"
+  billing_mode = "PAY_PER_REQUEST"
+  hash_key     = "ingredient_1"
 
   attribute {
     name = "ingredient_1"
@@ -104,10 +104,43 @@ data "archive_file" "zip_python_code" {
 }
 
 resource "aws_lambda_function" "terra_func_lambda" {
-  filename      = "${path.module}/python/lambda_code.zip"
-  function_name = "Fetch-Recipe"
-  role          = aws_iam_role.lambda_role.arn
-  handler       = "lambda_code.handler"
+  filename         = "${path.module}/python/lambda_code.zip"
+  function_name    = "Fetch-Recipe"
+  role             = aws_iam_role.lambda_role.arn
+  handler          = "lambda_code.lambda_handler"
   source_code_hash = filebase64sha256("python/lambda_code.zip")
-  runtime       = "python3.9"
+  runtime          = "python3.9"
+}
+
+resource "aws_apigatewayv2_api" "lambda_api" {
+  name          = "v2-http-api"
+  protocol_type = "HTTP"
+}
+
+resource "aws_apigatewayv2_stage" "lambda_stage" {
+  api_id      = aws_apigatewayv2_api.lambda_api.id
+  name        = "lambda-stage"
+  auto_deploy = true
+}
+
+resource "aws_apigatewayv2_integration" "lambda_integration" {
+  api_id               = aws_apigatewayv2_api.lambda_api.id
+  integration_type     = "AWS"
+  integration_method   = "POST"
+  integration_uri      = aws_lambda_function.terra_func_lambda.invoke_arn
+  passthrough_behavior = "WHEN_NO_MATCH"
+}
+
+resource "aws_apigatewayv2_route" "lambda_route" {
+  api_id    = aws_apigatewayv2_api.lambda_api.id
+  route_key = "GET /{proxy+}"
+  target    = "integrations/${aws_apigatewayv2_integration.lambda_integration.id}"
+}
+
+resource "aws_lambda_permission" "api_gw" {
+  statement_id  = "AllowExecutionFromAPIGateway"
+  action        = "lambda:InvokeFunction"
+  function_name = aws_lambda_function.terra_func_lambda.invoke_arn
+  principal     = "apigateway.amazonaws.com"
+  source_arn    = "${aws_apigatewayv2_api.lambda_api.execution_arn}/*/*/*"
 }
