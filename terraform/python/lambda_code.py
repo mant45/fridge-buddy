@@ -12,5 +12,4 @@ def lambda_handler(event, context):
     table = client.Table("food-table")
 
     #Get 1 item of the database
-    print("item = " + item)
     return table.get_item(Key={"ingredient_1":item})
