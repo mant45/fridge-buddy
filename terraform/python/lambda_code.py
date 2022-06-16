@@ -11,4 +11,4 @@ def lambda_handler(event, context):
     table = client.Table("food-table")
 
     #Get all items of the database
-    return json.dumps(table.scan(FilterExpression=Attr('ingredient_1').contains(item)))
+    return json.dumps(table.scan(FilterExpression=Attr('keyword').contains(item)))
