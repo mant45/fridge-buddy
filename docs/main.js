@@ -6,7 +6,8 @@ function checkForm(){
         alert("Please Enter in term to search for.");
     }
     else{
-        document.getElementById("results_heading").innerHTML = ("Results for:" + term);
+        document.getElementById('submit').disabled = true;
+        document.getElementById("results_heading").innerHTML = ("Results for: " + term);
         document.getElementById("results").classList.add("fadeIn");
     }
 }
