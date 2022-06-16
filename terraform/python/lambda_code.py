@@ -10,5 +10,5 @@ def lambda_handler(event, context):
     client = boto3.resource("dynamodb")
     table = client.Table("food-table")
 
-    #Get all items of the database
-    return json.dumps(table.scan(FilterExpression=Attr('ingredients_main').contains(item)))
+    #Get keyword filtered items of the database
+    return table.scan(FilterExpression=Attr('ingredients_main').contains(item))
