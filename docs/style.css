@@ -60,8 +60,7 @@ input{
 }
 
 #results_card{
-    padding:20px;
-    width: 400px;
+    width: 450px;
     height: 100%;
     box-shadow: 5px 10px 8px #000000;
     border: 1px solid;
@@ -71,6 +70,7 @@ input{
 #results_header{
     display: flex;
     justify-content: space-between;
+    padding: 5%;
 }
 #result_close{
     color: red;
