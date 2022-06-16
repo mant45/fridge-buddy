@@ -27,7 +27,7 @@ section{
     background-color: white;
     
 }
-#header{
+#landing_header{
     padding-top: 30px;
     height: 10%;
     display: flex;
@@ -69,23 +69,35 @@ input{
     background-color: white;
 }
 
+#results_header{
+    display: flex;
+    justify-content: space-between;
+}
+#result_close{
+    color: red;
+}
+
 .fadeIn{
-    -webkit-animation-fill-mode: forwards;
-            animation-fill-mode: forwards;
-    -webkit-animation-name: keyFadeIn;
-            animation-name: keyFadeIn;
-    -webkit-animation-duration: 1.0s;
-            animation-duration: 1.0s;
+    -webkit-animation: moveToTop .6s ease both;
+	animation: moveToTop .6s ease both;
     
 }
 
-@keyframes keyFadeIn{
-    from {
-
-    }
+@keyframes moveToTop{
 	to {
-        visibility: visible;
         transform: translateY(-100%); 
+    }
+}
+
+.fadeOut {
+	-webkit-animation: moveFromTop .6s ease both;
+	animation: moveFromTop .6s ease both;
+}
+
+
+@keyframes moveFromTop {
+    from { 
+        -webkit-transform: translateY(-100%); 
     }
 }
 
