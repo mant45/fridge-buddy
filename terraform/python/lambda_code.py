@@ -17,5 +17,5 @@ def lambda_handler(event, context):
             "Content-Type": "application/json",
             "Access-Control-Allow-Origin": "*"
         },
-        'body': json.dumps(table.scan(FilterExpression=Attr('ingredients_main').contains(item)))
+        'body': table.scan(FilterExpression=Attr('ingredients_main').contains(item))
     }
