@@ -12,10 +12,10 @@ def lambda_handler(event, context):
 
     #Get keyword filtered items of the database
     return{
-        'statusCode': 200,
-        'headers': {
-            'Access-Control-Allow-Origin': '*',
-            'Access-Control-Allow-Methods': 'GET'
+        "statusCode": 200,
+        "headers": {
+            "Content-Type": "application/json",
+            "Access-Control-Allow-Origin": "*"
         },
         'body': json.dumps(table.scan(FilterExpression=Attr('ingredients_main').contains(item)))
     }
