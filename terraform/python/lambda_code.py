@@ -11,11 +11,4 @@ def lambda_handler(event, context):
     table = client.Table("food-table")
 
     #Get keyword filtered items of the database
-    return{
-        "statusCode": 200,
-        "headers": {
-            "Content-Type": "application/json",
-            "Access-Control-Allow-Origin": "*"
-        },
-        'body': json.dumps(table.scan(FilterExpression=Attr('ingredients_main').contains(item)))
-    }
+    return table.scan(FilterExpression=Attr('ingredients_main').contains(item))
