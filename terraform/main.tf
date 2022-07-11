@@ -59,16 +59,16 @@ resource "aws_iam_role_policy" "read_dynamo_db" {
 
 data "archive_file" "zip_python_code" {
   type        = "zip"
-  source_file = "${path.module}/python/lambda_code.py"
-  output_path = "${path.module}/python/lambda_code.zip"
+  source_file = "${path.module}/../python/lambda_code.py"
+  output_path = "${path.module}/../python/lambda_code.zip"
 }
 
 resource "aws_lambda_function" "terra_func_lambda" {
-  filename         = "${path.module}/python/lambda_code.zip"
+  filename         = "${path.module}/../python/lambda_code.zip"
   function_name    = "Fetch-Recipe"
   role             = aws_iam_role.lambda_role.arn
   handler          = "lambda_code.lambda_handler"
-  source_code_hash = filebase64sha256("python/lambda_code.zip")
+  source_code_hash = filebase64sha256("/../python/lambda_code.zip")
   runtime          = "python3.9"
 }
 
