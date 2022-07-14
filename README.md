@@ -21,14 +21,20 @@ We wanted to make a project that included all areas of a web app. Including deve
 
 
 ## Technologies.
-### Front-End
-Development: HTML, CSS, JavaScript
-Services: GitHub Pages
+### Languages: 
+- Python 3.10.
+- JavaScript.
 
-### Back-End
-Development: Python
-Services: API Gateway, Lambda, DynamoDB
-Infrastructure Management: Terraform
+### Back-End Technologies:
+- [AWS API Gateway.](https://aws.amazon.com/api-gateway/)
+- [AWS Lambda.](https://aws.amazon.com/lambda/)
+- [AWS DynamoDB.](https://aws.amazon.com/dynamodb/)
+
+### Libaries Used:
+- [Boto3](https://boto3.amazonaws.com/v1/documentation/api/latest/index.html) - AWS SDK for Python used to manage our DynamoDB service.
+
+### Infrastructure Management:
+- [Terraform](https://www.terraform.io/) - Allowed us to predictably create, change, and improve our infrastructure.
 
 ## How It Works.
 
